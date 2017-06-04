@@ -5,29 +5,35 @@ include('autoload.php');
 $pregunta = new Pregunta();
 $opciones = new Opciones();
 
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Resultados</title>
+</head>
+<body>
+<h1>Resultado de la encuesta</h1>
+<hr>
+<?php 
 
+foreach ($pregunta->lista() as $key_p => $value_p) 
+{
+   
+   echo "<Strong>".$pregunta->consulta($value_p['id'],'nombre')."</Strong>";
+    
+   echo "</br>";
+  
+   $opcion =  "option".$value_p['id'];
 
-$pregunta1 = $opciones -> consulta($_POST['opcion1'],'nombre');
-
-$pregunta2 = $opciones -> consulta($_POST['opcion2'],'nombre');
+   echo $opciones -> consulta($_POST[$opcion],'nombre')."</br>";
+   echo "</br>";
+}
 
 
  ?>
 
- <!DOCTYPE html>
- <html lang="es">
- <head>
- 	<meta charset="UTF-8">
- 	<title>Respuestas</title>
- </head>
- <body>
-<h1>Resultado:</h1>
-<ul>
-<li><?php echo $pregunta->consulta(1,'nombre'); ?> : <?php echo $pregunta1;?></li>
-<li><?php echo $pregunta->consulta(2,'nombre'); ?> :<?php echo $pregunta2;?></li>
-</ul>
-
+ 
 <a href="encuesta.php">Volver a realizar la encuesta</a>
- 	
- </body>
- </html>
+</body>
+</html>

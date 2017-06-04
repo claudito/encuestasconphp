@@ -15,9 +15,11 @@ foreach ($pregunta->lista() as $key_p => $value_p)
  {
     echo "<label>".$value_p['nombre']."</label>"."</br>";
     $opciones = new Opciones();
-    foreach ($opciones->lista($value_p['id']) as $key => $value) 
+    foreach ($opciones->lista($value_p['id']) as $key => $value_r) 
     {
-        echo "<input type='radio' name='opcion".$value_p['id']."' value='".$value['id']."'  required>".$value['nombre']."</br>";
+        echo "<input type='radio' name='option".$value_p['id']."' value='".$value_r['id']."'  required>".$value_r['nombre']."</br>";
+
+
     }
       echo "<hr>";
  }
